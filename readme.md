@@ -38,3 +38,10 @@ style-loader css-loader // 有顺序, style 应用, css  解析
 
 less-loader & less
 less-loader 需要 less  处理
+
+
+file-loader & url-loader
+
+处理图片, 字体文件.
+url-loader 可对图片进行高级处理, 如转换成  base64. 依赖 file-loader
+配置 图片小于 5kb 传唤成 base64 以减少浏览器请求次数

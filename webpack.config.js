@@ -27,6 +27,19 @@ module.exports = {
             },
             {
                 test: /\.s(a|c)ss$/, use: ['style-loader', 'css-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
+            },
+            {
+                test: /\.(png|jpg|bmp|jpeg|gif)$/, use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 5 * 1024, // 小于 5kb 转换成 base64(占空间) , 以减少 浏览器请求. 
+                        outputPath: 'images', // 放在 images 目录下
+                        name: '[name]-[hash:4].[ext]', // 自定义图片名
+                    }
+                } // 处理 图片文件 , 字体文件 , url-loader 基于 file-loader 封装, limit 是 ulr 的功能
+            },
+            {
+                test: /\.(woff|woff2|eot|svg|ttf)$/, use: 'file-loader' // file-loader 处理字体文件. (都是 file-loader 但一般习惯分开写)
             }
         ]
     }
