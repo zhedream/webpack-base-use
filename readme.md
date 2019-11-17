@@ -23,3 +23,10 @@ npm i html-webpack-plugin -D
 
 webpack打包或webpack-dev-server开发时, 根据模板生成一个生成一个 html
 webpack 在硬盘, dist 生成, 开发, 的内存中 /index.html
+
+4. webpack-dev-middleware
+webpack-dev-server 的底层, 可以自定服务
+｢wds｣: Compiled successfully. webpack-dev-server 
+｢wdm｣: Compiled successfully. webpack-dev-middleware
+必须使用html-webpack-plugin, 不然找不到 index.html
+
