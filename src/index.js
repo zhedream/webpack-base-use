@@ -19,3 +19,27 @@ window.onload = function () {
     console.log(el);
 }
 
+class Dog{
+    name = '小黑'
+    static color = '黑色'
+}
+
+let p =  new Dog()
+
+console.log(p);
+
+// 最新浏览器支持, babel 需要插件 @babel/plugin-transform-runtime
+function *Gen(){
+    yield 1
+    yield 2
+    return 3;
+}
+
+let g = Gen();
+console.log(g.next());
+console.log(g.next());
+console.log(g.next());
+console.log(g.next());
+
+
+

@@ -40,6 +40,18 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|svg|ttf)$/, use: 'file-loader' // file-loader 处理字体文件. (都是 file-loader 但一般习惯分开写)
+            },
+            {
+                test: /\.js$/, use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/env'], // 常用的预设
+                        plugins: [
+                            '@babel/plugin-proposal-class-properties',
+                            '@babel/plugin-transform-runtime'] // babel 通过插件, 转换高级语法
+                    }
+                },
+                exclude: /node_modules/
             }
         ]
     }
