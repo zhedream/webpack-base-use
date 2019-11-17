@@ -20,7 +20,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 // 管道调用, 从右到左 做处理的, css 解析, style 应用
-                use: ['style-loader','css-loader']
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
             }
         ]
     }

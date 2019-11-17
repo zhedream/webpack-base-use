@@ -35,3 +35,6 @@ webpack 默认只对 js 进行打包,
 需要打包 xx.css , 就需要 css 的 loader. xxx.less 其他后缀的 需要相应的 loader
 css 的 loader
 style-loader css-loader // 有顺序, style 应用, css  解析 
+
+less-loader & less
+less-loader 需要 less  处理

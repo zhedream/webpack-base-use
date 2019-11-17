@@ -2,6 +2,7 @@ let A = require('./a')
 import B from './b';
 
 import '../public/styles/index.css'
+import '../public/styles/index.less'
 
 console.log(A);
 console.log(B);
