@@ -6,4 +6,4 @@ webpack 的学习
 
 2. npm install webpack webpack-cli -D
 
-3. npx webpack
+3. npx webpack | npx webpack --config webpack.myconfig.js
