@@ -17,3 +17,9 @@ webpack-dev-server
 --hot // 热模块更替
 --contentBase public // 服务根目录
 --port 8080 // 端口
+
+3. html-webpack-plugin 插件
+npm i html-webpack-plugin -D
+
+webpack打包或webpack-dev-server开发时, 根据模板生成一个生成一个 html
+webpack 在硬盘, dist 生成, 开发, 的内存中 /index.html
