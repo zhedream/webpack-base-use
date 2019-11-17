@@ -24,6 +24,9 @@ module.exports = {
             },
             {
                 test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
+            },
+            {
+                test: /\.s(a|c)ss$/, use: ['style-loader', 'css-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
             }
         ]
     }
