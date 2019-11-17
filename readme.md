@@ -30,3 +30,8 @@ webpack-dev-server 的底层, 可以自定服务
 ｢wdm｣: Compiled successfully. webpack-dev-middleware
 必须使用html-webpack-plugin, 不然找不到 index.html
 
+5. loader
+webpack 默认只对 js 进行打包, 
+需要打包 xx.css , 就需要 css 的 loader. xxx.less 其他后缀的 需要相应的 loader
+css 的 loader
+style-loader css-loader // 有顺序, style 应用, css  解析 

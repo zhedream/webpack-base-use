@@ -1,6 +1,8 @@
 let A = require('./a')
 import B from './b';
 
+import '../public/styles/index.css'
+
 console.log(A);
 console.log(B);
 

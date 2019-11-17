@@ -14,5 +14,14 @@ module.exports = {
             filename: 'index.html',
             template: 'public/index.html'
         })
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                // 管道调用, 从右到左 做处理的, css 解析, style 应用
+                use: ['style-loader','css-loader']
+            }
+        ]
+    }
 };
