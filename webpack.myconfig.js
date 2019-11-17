@@ -8,5 +8,12 @@ module.exports = {
         // 打包出口
         path: path.resolve(__dirname, 'dist'), // 解析成绝对路径
         filename: 'bundle.js'
+    },
+    devServer: {
+        open: true, // 自动打开浏览器
+        port: 3000, // 端口
+        compress: true, // gzip
+        contentBase: 'public', // 根目录
+        hot: true, // 热模块更替
     }
 };

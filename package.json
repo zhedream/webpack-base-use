@@ -7,13 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
     "mybuild": "webpack --config webpack.myconfig.js",
-    "buildwatch": "webpack --watch"
+    "buildwatch": "webpack --watch",
+    "dev": "webpack-dev-server --hot --contentBase public --port 8080"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
