@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const webpack = require('webpack');
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
@@ -11,6 +13,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
+        new webpack.BannerPlugin('这里添加版权信息啦'),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'public/index.html'
