@@ -74,3 +74,6 @@ polyfill "foo".includes('0) , 为对象方法,做兼容
 4. sourceMap
 devtool:'cheap-module-eval-source-map' 会生产模式 none
 LINK: https://webpack.docschina.org/configuration/devtool
+
+5. webpack plugin 一些有用的插件
+clean-webpack-plugin -D // 打包时清理 dist
