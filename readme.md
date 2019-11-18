@@ -70,3 +70,7 @@ polyfill "foo".includes('0) , 为对象方法,做兼容
 
 **.babelrc**
 官方推荐,把 babel-loader 的配置项 , 写入 .babelrc 里
+
+4. sourceMap
+devtool:'cheap-module-eval-source-map' 会生产模式 none
+LINK: https://webpack.docschina.org/configuration/devtool
