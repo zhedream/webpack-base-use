@@ -61,8 +61,12 @@ babel 能检测出来, 会提示你装个 babel 的插件
 npm i @babel/plugin-proposal-class-properties -D , 在wenpack babel-loader 配置 option plugins
 
 **常用的babel插件**
+支持或兼容 语法
 npm install --D @babel/plugin-transform-runtime
 npm install --S @babel/runtime
+
+npm i @babel/polyfill -S
+polyfill "foo".includes('0) , 为对象方法,做兼容
 
 **.babelrc**
 官方推荐,把 babel-loader 的配置项 , 写入 .babelrc 里
