@@ -78,3 +78,4 @@ LINK: https://webpack.docschina.org/configuration/devtool
 5. webpack plugin 一些有用的插件
 npm i clean-webpack-plugin -D // 打包时清理 dist
 npm i copy-webpack-plugin -D // 复制 静态文件, 到 dist 不需要打包的 static
+npm i html-withimg-loader -D // 处理 index.html 的图片打包 使用相对路径 "../" , 以来 file-loader

@@ -63,6 +63,10 @@ module.exports = {
                     // }
                 },
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(htm|html)$/i,
+                loader: 'html-withimg-loader'
             }
         ]
     },
