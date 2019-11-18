@@ -44,12 +44,12 @@ module.exports = {
             {
                 test: /\.js$/, use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/env'], // 常用的预设
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties',
-                            '@babel/plugin-transform-runtime'] // babel 通过插件, 转换高级语法
-                    }
+                    // options: {
+                    //     presets: ['@babel/env'], // 常用的预设
+                    //     plugins: [
+                    //         '@babel/plugin-proposal-class-properties',
+                    //         '@babel/plugin-transform-runtime'] // babel 通过插件, 转换高级语法
+                    // }
                 },
                 exclude: /node_modules/
             }

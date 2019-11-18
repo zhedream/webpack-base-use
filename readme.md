@@ -63,3 +63,6 @@ npm i @babel/plugin-proposal-class-properties -D , 在wenpack babel-loader 配�
 **常用的babel插件**
 npm install --D @babel/plugin-transform-runtime
 npm install --S @babel/runtime
+
+**.babelrc**
+官方推荐,把 babel-loader 的配置项 , 写入 .babelrc 里
