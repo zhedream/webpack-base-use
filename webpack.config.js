@@ -7,16 +7,23 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack');
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    // entry: './src/index.js',
+    entry: { index: './src/index.js', other: './src/other.js' },
     output: {
         path: path.resolve(__dirname, './dist'), // 解析成绝对路径
-        filename: 'bundle.js'
+        filename: '[name].js' // [name] 对应每个入口 
     },
     plugins: [
         new webpack.BannerPlugin('这里添加版权信息啦'),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'public/index.html'
+            template: 'public/index.html',
+            chunks:['index']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'other.html',
+            template: 'public/other.html',
+            chunks:['other']
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([

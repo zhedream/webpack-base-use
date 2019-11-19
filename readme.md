@@ -79,3 +79,7 @@ LINK: https://webpack.docschina.org/configuration/devtool
 npm i clean-webpack-plugin -D // 打包时清理 dist
 npm i copy-webpack-plugin -D // 复制 静态文件, 到 dist 不需要打包的 static
 npm i html-withimg-loader -D // 处理 index.html 的图片打包 使用相对路径 "../" , 以来 file-loader
+
+6. 多页应用的打包
+配置多个入口,
+HtmlWebpackPlugin, 配置多个 多html 的拷贝,与选择所需要的 js , chunks
