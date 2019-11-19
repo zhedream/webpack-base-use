@@ -1,17 +1,19 @@
+const webpack = require('webpack');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const webpack = require('webpack');
+// 基本的公共配置
 module.exports = {
-    mode: 'development',
     // entry: './src/index.js',
-    entry: { index: './src/index.js', other: './src/other.js' },
+    entry: { index: './src/index.js', other: './src/other.js' }, // 相对路径, 相对与项目根目录, 应该是 package.json 的文件夹
     output: {
-        path: path.resolve(__dirname, './dist'), // 解析成绝对路径
-        filename: '[name].js' // [name] 对应每个入口 
+        path: path.resolve(__dirname, '..', './dist'), // 解析成绝对路径
+        filename: '[name].js', // [name] 对应每个入口
+        publicPath: '/', // 放到服务根目录 / ,或其他 如 /admin
+
     },
     plugins: [
         new webpack.BannerPlugin('这里添加版权信息啦'),
@@ -28,13 +30,13 @@ module.exports = {
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
             {
-                from: path.resolve(__dirname, './public/static'),
+                from: path.join(__dirname, '..', './public/static'),
                 to: 'static' // output
             }
         ]),
         new webpack.ProvidePlugin({
-            $:'jquery',
-            Jquery:'jquery',
+            $: 'jquery',
+            Jquery: 'jquery',
         }), // 所有页面所有模块都会注入 jq
     ],
     module: {
@@ -88,5 +90,4 @@ module.exports = {
             // }
         ]
     },
-    devtool: 'cheap-module-eval-source-map'
 };
