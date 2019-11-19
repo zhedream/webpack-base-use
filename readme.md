@@ -89,5 +89,8 @@ npm i expose-loader -D // 加载包到window全局, 仅限这个页面, 打包�
 new webpack.ProvidePlugin({$:'jquery',}) // 每个页面, 每个模块都会注入 jq , 注: 是模块内, 非 window.$ @
 
 8. wenpack-merge
+npm i webpack-merge -D  // 合并webpack 配置
+npm i live-server -D // 启动一个node服务 查看dist
 
-npm i webpack-merge -D
+9. 环境变量
+new webpack.DefinePlugin({IS_DEV: "true"}) // 给每一个模块注入一个变量

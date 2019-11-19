@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.common.js');
 
@@ -13,4 +14,11 @@ module.exports = merge(webpackBaseConfig, {
         port: 8080, // 服务端口
         // contentBase: './src' // 服务根目录
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            IS_DEV: "true",
+            IS_NUM: "1+1",
+            IS_STR: "'str'",
+        })
+    ]
 })

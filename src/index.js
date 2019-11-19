@@ -51,6 +51,7 @@ let Foo = "foo";
 console.log(Foo.includes('o'));
 
 
+console.log('环境变量',IS_DEV,IS_NUM,IS_STR);
 
 
 
