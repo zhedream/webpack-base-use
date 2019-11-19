@@ -83,3 +83,7 @@ npm i html-withimg-loader -D // 处理 index.html 的图片打包 使用相对�
 6. 多页应用的打包
 配置多个入口,
 HtmlWebpackPlugin, 配置多个 多html 的拷贝,与选择所需要的 js , chunks
+
+7. 注入依赖包 如: jq
+npm i expose-loader -D // 加载包到window全局, 仅限这个页面, 打包入口及其引入的模块 @
+new webpack.ProvidePlugin({$:'jquery',}) // 每个页面, 每个模块都会注入 jq , 注: 是模块内, 非 window.$ @

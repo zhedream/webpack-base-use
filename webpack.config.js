@@ -18,12 +18,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'public/index.html',
-            chunks:['index']
+            chunks: ['index']
         }),
         new HtmlWebpackPlugin({
             filename: 'other.html',
             template: 'public/other.html',
-            chunks:['other']
+            chunks: ['other']
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
@@ -31,7 +31,11 @@ module.exports = {
                 from: path.resolve(__dirname, './public/static'),
                 to: 'static' // output
             }
-        ])
+        ]),
+        new webpack.ProvidePlugin({
+            $:'jquery',
+            Jquery:'jquery',
+        }), // 所有页面所有模块都会注入 jq
     ],
     module: {
         rules: [
@@ -74,7 +78,14 @@ module.exports = {
             {
                 test: /\.(htm|html)$/i,
                 loader: 'html-withimg-loader'
-            }
+            },
+            // {
+            //     test: require.resolve('jquery'), // 解析node_modules 的 jq 路径, 把 jq 放到 window 上 , 当前页面
+            //     use: {
+            //         loader: 'expose-loader',
+            //         options: '$'
+            //     }
+            // }
         ]
     },
     devtool: 'cheap-module-eval-source-map'
