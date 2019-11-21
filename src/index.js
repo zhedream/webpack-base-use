@@ -8,13 +8,13 @@ import '../public/styles/index.less'
 import '../public/styles/index.scss'
 
 // 引入bootstrap3的css文件 , 使用的 字体图标 icon
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
 
 // 给对象原型 打兼容补丁
 import '@babel/polyfill'
 
-console.log(A);
-console.log(B);
+// console.log(A);
+// console.log(B);
 
 console.log('hello webpack');
 
@@ -22,7 +22,7 @@ window.onload = function () {
     let el = document.getElementById('webpack')
 
     console.log(el);
-    console.log($);
+    // console.log($);
 }
 
 // 最新语法,做浏览器支持,  使用babel插件 @babel/plugin-transform-runtime
@@ -39,11 +39,11 @@ function* Gen() {
     return 3;
 }
 
-let g = Gen();
-console.log(g.next());
-console.log(g.next());
-console.log(g.next());
-console.log(g.next());
+// let g = Gen();
+// console.log(g.next());
+// console.log(g.next());
+// console.log(g.next());
+// console.log(g.next());
 
 
 // 对象原型方法, 引用 @babel/polyfill 做兼容

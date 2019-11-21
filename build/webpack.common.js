@@ -50,13 +50,13 @@ module.exports = {
             {
                 test: /\.css$/,
                 // 管道调用, 从右到左 做处理的, css 解析, style 应用
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader',]
             },
             {
-                test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
+                test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
             },
             {
-                test: /\.s(a|c)ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
+                test: /\.s(a|c)ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
             },
             {
                 test: /\.(png|jpg|bmp|jpeg|gif)$/, use: {

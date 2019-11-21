@@ -1,7 +1,7 @@
 
 console.log('B ES6 模块');
 
-console.log($);
+// console.log($);
 // console.log(window.$);
 
 

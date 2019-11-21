@@ -154,3 +154,15 @@ npm i -D mini-css-extract-plugin // 这是一个插件 + loader
 
 之前 的style-loader 会将CSS 插入到 html 中 , 所以 我们替换成
 mini-css-extract-plugin 的 loader, 则会把 CSS 提取到 文件中. 并在 相应的模板 html 中引入 CSS文件
+
+**天降CSS前缀**
+
+提升CSS的兼容性
+
+npm i -D postcss-loader autoprefixer
+
+需要注意的是
+
+1. postcss-loader放置在css-loader的右边
+2. 需要配置 在项目根目录配置 postcss.config.js ,配置一下 postcss 使用的依赖插件 autoprefixer
+
