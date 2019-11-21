@@ -114,3 +114,16 @@ if (module.hot) {
 使用场景: 在 A 模块, 点点点, 进入了一个页面, 这个页面引入了一个B模块(组件),
 你要修改了 B 的一个代码, 结果浏览器就刷新了, 你就又要 点点点 点开 这个页面组件.这也太难受了.
 这时候 HMR 就非常有用了 , 修改 B 页面也不会刷新 .如果 B模块完成后, 就可以把, 这段代码删了.
+
+# 优化
+
+## mode: production
+
+**一:  tree shaking**
+
+会移除没有引用的代码,利用了 import from 语法的静态结构的特性.
+
+注:
+ 1. import from 只能在顶级作用域使用, 不能 if 使用 , 所以推荐使用 import from 
+ 2. require 可以灵活使用 if 动态 引入模块, 所以 webpack require 不能 tree shaking. 
+
