@@ -51,8 +51,14 @@ let Foo = "foo";
 console.log(Foo.includes('o'));
 
 
-console.log('环境变量',IS_DEV,IS_NUM,IS_STR);
+console.log('环境变量', IS_DEV, IS_NUM, IS_STR);
 
 
 
-
+if (module.hot) {
+    module.hot.accept('./b.js', function (params) {
+        // 模块热替换, 从而实现不刷新页面
+        var newModule = require('./b'); // 使用 require 重新引入, 不能使用 import from
+        console.log('模块更新', newModule);
+    })
+}

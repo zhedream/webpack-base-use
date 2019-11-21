@@ -97,3 +97,20 @@ new webpack.DefinePlugin({IS_DEV: "true"}) // 给每一个模块注入一个变�
 
 10. devServer proxy
 解决开发时的跨域问题
+
+## HMR 模块热替换
+仅适用于 开发阶段
+
+```js
+// A 模块
+if (module.hot) {
+    module.hot.accept('./b.js', function (params) {
+        // 模块热替换, 重新 require 模块 从而实现不刷新页面
+        var newModule = require('./b'); // 使用 require 重新引入, 不能使用 import from
+        console.log('模块更新, 写一些更新后的逻辑', newModule);
+    })
+}
+```
+使用场景: 在 A 模块, 点点点, 进入了一个页面, 这个页面引入了一个B模块(组件),
+你要修改了 B 的一个代码, 结果浏览器就刷新了, 你就又要 点点点 点开 这个页面组件.这也太难受了.
+这时候 HMR 就非常有用了 , 修改 B 页面也不会刷新 .如果 B模块完成后, 就可以把, 这段代码删了.
