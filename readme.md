@@ -119,7 +119,7 @@ if (module.hot) {
 
 ## mode: production
 
-**一:  tree shaking**
+**一. tree shaking**
 
 会移除没有引用的代码,利用了 import from 语法的静态结构的特性.
 
@@ -127,7 +127,7 @@ if (module.hot) {
  1. import from 只能在顶级作用域使用, 不能 if 使用 , 所以推荐使用 import from 
  2. require 可以灵活使用 if 动态 引入模块, 所以 webpack require 不能 tree shaking. 
 
-**二: scope hoisting**
+**二. scope hoisting**
 
 ModuleConcatenationPlugin , 在mode: production 自动启动, 或手动启动该插件
 
@@ -142,20 +142,20 @@ console.log(a,b) // console.log(1,2)
 ```
 只能分析推断, 预执行, 有点 Quokka.js 的感觉
 
-**三: 代码混淆与压缩**
+**三. 代码混淆与压缩**
 
 通过 UglifyjsPlugin
 
 ## CSS优化
 
-**提取到CSS文件**
+**一. 提取到CSS文件**
 
 npm i -D mini-css-extract-plugin // 这是一个插件 + loader
 
 之前 的style-loader 会将CSS 插入到 html 中 , 所以 我们替换成
 mini-css-extract-plugin 的 loader, 则会把 CSS 提取到 文件中. 并在 相应的模板 html 中引入 CSS文件
 
-**天降CSS前缀**
+**二. 添加CSS前缀**
 
 提升CSS的兼容性
 
@@ -165,4 +165,16 @@ npm i -D postcss-loader autoprefixer
 
 1. postcss-loader放置在css-loader的右边
 2. 需要配置 在项目根目录配置 postcss.config.js ,配置一下 postcss 使用的依赖插件 autoprefixer
+
+**三. CSS压缩**
+
+npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin // CSS 压缩 和 JS 压缩
+
+webpack 默认有 JS 压缩 , 没有CSS 压缩
+我们需要 webpack配置 optimization.minimizer 节点, 配置 CSS 压缩, 会把原来的 JS 压缩配置覆盖.
+所以需要把 JS压缩插件 一同配置上去.
+
+压缩消耗性能, 开发也不需要, 把插件 配置到 prod 上去即可.
+
+注: webpakc5 肯能 会默认自带 CSS 压缩
 
