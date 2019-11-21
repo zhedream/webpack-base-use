@@ -129,7 +129,7 @@ if (module.hot) {
 
 **二: scope hoisting**
 
-ModuleConcatenationPlugin
+ModuleConcatenationPlugin , 在mode: production 自动启动, 或手动启动该插件
 
 分析模块或代码之间的依赖关系, 尽可能将打散的模块或代码 合并到一个函数中去, 避免冗余
 只有引入一次的模块才能被合并, 所以也需要 import from 
@@ -145,3 +145,12 @@ console.log(a,b) // console.log(1,2)
 **三: 代码混淆与压缩**
 
 通过 UglifyjsPlugin
+
+## CSS优化
+
+**提取到CSS文件**
+
+npm i -D mini-css-extract-plugin // 这是一个插件 + loader
+
+之前 的style-loader 会将CSS 插入到 html 中 , 所以 我们替换成
+mini-css-extract-plugin 的 loader, 则会把 CSS 提取到 文件中. 并在 相应的模板 html 中引入 CSS文件

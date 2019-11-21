@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+// 提取CSS 到文件 插件 + loader
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 // 基本的公共配置
 module.exports = {
     // entry: './src/index.js',
@@ -27,6 +30,9 @@ module.exports = {
             template: 'public/other.html',
             chunks: ['other']
         }),
+        new MiniCssExtractPlugin({
+            filename: '[name]-[hash:4].css'
+        }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
             {
@@ -44,13 +50,13 @@ module.exports = {
             {
                 test: /\.css$/,
                 // 管道调用, 从右到左 做处理的, css 解析, style 应用
-                use: ['style-loader', 'css-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             {
-                test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
+                test: /\.less$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'] // 把 less 转成 css , 解析 css , 应用 css
             },
             {
-                test: /\.s(a|c)ss$/, use: ['style-loader', 'css-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
+                test: /\.s(a|c)ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // 把 sass 转成 css , 解析 css , 应用 css
             },
             {
                 test: /\.(png|jpg|bmp|jpeg|gif)$/, use: {
