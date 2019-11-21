@@ -13,6 +13,14 @@ module.exports = merge(webpackBaseConfig, {
         compress: true, // gzip
         port: 8080, // 服务端口
         // contentBase: './src' // 服务根目录
+        proxy: {
+            '/api': {
+                target: 'http://localhost:9999', // http://localhost:9999/api ... 默认带 /api
+                pathRewrite: {
+                    '^api': '' // 重写地址,为空去除 /api
+                }
+            }
+        }
     },
     plugins: [
         new webpack.DefinePlugin({

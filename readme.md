@@ -94,3 +94,6 @@ npm i live-server -D // 启动一个node服务 查看dist
 
 9. 环境变量
 new webpack.DefinePlugin({IS_DEV: "true"}) // 给每一个模块注入一个变量
+
+10. devServer proxy
+解决开发时的跨域问题
