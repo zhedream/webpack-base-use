@@ -127,3 +127,21 @@ if (module.hot) {
  1. import from 只能在顶级作用域使用, 不能 if 使用 , 所以推荐使用 import from 
  2. require 可以灵活使用 if 动态 引入模块, 所以 webpack require 不能 tree shaking. 
 
+**二: scope hoisting**
+
+ModuleConcatenationPlugin
+
+分析模块或代码之间的依赖关系, 尽可能将打散的模块或代码 合并到一个函数中去, 避免冗余
+只有引入一次的模块才能被合并, 所以也需要 import from 
+
+```js
+let a = 1
+let b = 2
+console.log(a+b) // 打包后 console.log(3)
+console.log(a,b) // console.log(1,2)
+```
+只能分析推断, 预执行, 有点 Quokka.js 的感觉
+
+**三: 代码混淆与压缩**
+
+通过 UglifyjsPlugin
