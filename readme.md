@@ -197,3 +197,21 @@ html-webpack-plugin@3.2.0 : latest, 的bug不会把 提取的公共js 引入html
 升级到 @next 4.0.0-beta.11 修复了
 npm i -D html-webpack-plugin@next
 https://www.cnblogs.com/founderswitch/p/10481818.html
+
+**动态导入(懒加载)**
+
+import('jquery') 的语法
+
+需要babel 转换
+
+npm i -D @babel/plugin-syntax-dynamic-import
+
+```js
+// 返回一个 promise
+function getComponent() {
+  return import('jquery').then(({ default: $ }) => {
+    return $('<div></div>').html('main')
+  })
+}
+
+```

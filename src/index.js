@@ -13,7 +13,7 @@ import '../public/styles/index.scss'
 // 给对象原型 打兼容补丁
 import '@babel/polyfill'
 
-import $ from "jquery"
+// import $ from "jquery"
 
 // console.log(A);
 // console.log(B);
@@ -25,6 +25,10 @@ window.onload = function () {
 
     console.log(el);
     // console.log($);
+    getComponent().then(el=>{
+        
+        el.appendTo('body')
+    })
 }
 
 // 最新语法,做浏览器支持,  使用babel插件 @babel/plugin-transform-runtime
@@ -55,7 +59,11 @@ console.log(Foo.includes('o'));
 
 console.log('环境变量', IS_DEV, IS_NUM, IS_STR);
 
-
+function getComponent() {
+    return import('jquery').then(({ default: $ }) => {
+        return $('<div></div>').html('异步加载模块 懒加载')
+    })
+}
 
 if (module.hot) {
     module.hot.accept('./b.js', function (params) {
