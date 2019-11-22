@@ -1,7 +1,7 @@
 
 console.log('B ES6 模块');
 
-import $ from "jquery"
+// import $ from "jquery"
 
 // console.log($);
 // console.log(window.$);

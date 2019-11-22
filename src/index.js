@@ -25,25 +25,32 @@ window.onload = function () {
 
     console.log(el);
     // console.log($);
-    getComponent().then(el=>{
-        
-        el.appendTo('body')
+    document.getElementById('btn').onclick = function () {
+        getComponent().then(item => {
+            item.appendTo('body')
+        })
+    }
+}
+
+function getComponent() {
+    return import('jquery').then(({ default: $ }) => {
+        return $('<div></div>').html('异步加载模块 懒加载')
     })
 }
 
 // 最新语法,做浏览器支持,  使用babel插件 @babel/plugin-transform-runtime
-class Dog {
-    name = '小黑'
-    static color = '黑色'
-}
-let p = new Dog()
-console.log(p);
+// class Dog {
+//     name = '小黑'
+//     static color = '黑色'
+// }
+// let p = new Dog()
+// console.log(p);
 
-function* Gen() {
-    yield 1
-    yield 2
-    return 3;
-}
+// function* Gen() {
+//     yield 1
+//     yield 2
+//     return 3;
+// }
 
 // let g = Gen();
 // console.log(g.next());
@@ -53,17 +60,12 @@ function* Gen() {
 
 
 // 对象原型方法, 引用 @babel/polyfill 做兼容
-let Foo = "foo";
-console.log(Foo.includes('o'));
+// let Foo = "foo";
+// console.log(Foo.includes('o'));
 
 
 console.log('环境变量', IS_DEV, IS_NUM, IS_STR);
 
-function getComponent() {
-    return import('jquery').then(({ default: $ }) => {
-        return $('<div></div>').html('异步加载模块 懒加载')
-    })
-}
 
 if (module.hot) {
     module.hot.accept('./b.js', function (params) {
