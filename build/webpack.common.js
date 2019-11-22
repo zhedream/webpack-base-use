@@ -18,6 +18,11 @@ module.exports = {
         publicPath: '/', // 放到服务根目录 / ,或其他 如 /admin
 
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new webpack.BannerPlugin('这里添加版权信息啦'),
         new HtmlWebpackPlugin({
@@ -40,10 +45,10 @@ module.exports = {
                 to: 'static' // output
             }
         ]),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            Jquery: 'jquery',
-        }), // 所有页面所有模块都会注入 jq
+        // new webpack.ProvidePlugin({
+        //     $: 'jquery',
+        //     Jquery: 'jquery',
+        // }), // 所有页面所有模块都会注入 jq , 队提取公共代码不友好.  import from 有利与代码优化
     ],
     module: {
         rules: [

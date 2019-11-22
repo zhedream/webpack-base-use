@@ -178,3 +178,22 @@ webpack 默认有 JS 压缩 , 没有CSS 压缩
 
 注: webpakc5 肯能 会默认自带 CSS 压缩
 
+## JS 优化
+
+**配置多入口**
+
+**代码分离**
+
+1. 提取公共代码
+
+SplitChunksPlugin
+
+optimization.splitChunks.chunks:'all'
+配置后, webpack 会分析 公共的模块, 提出到一个公共的JS 中
+
+注: 一个坑, 单入口没问题
+开启 splitChunks 后 , 如果是多入口
+html-webpack-plugin@3.2.0 : latest, 的bug不会把 提取的公共js 引入html
+升级到 @next 4.0.0-beta.11 修复了
+npm i -D html-webpack-plugin@next
+https://www.cnblogs.com/founderswitch/p/10481818.html

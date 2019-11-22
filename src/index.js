@@ -1,6 +1,6 @@
 // import $ from 'jquery' // 必须引用 test 匹配到 会注入 window , 他的 import 也能使用 $ // expose-loader 贵挂在到全局, 以后import 的模块都能用, @有限制!
 
-let A = require('./a')
+// let A = require('./a')
 import B from './b';
 
 import '../public/styles/index.css'
@@ -12,6 +12,8 @@ import '../public/styles/index.scss'
 
 // 给对象原型 打兼容补丁
 import '@babel/polyfill'
+
+import $ from "jquery"
 
 // console.log(A);
 // console.log(B);

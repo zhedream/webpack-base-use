@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./build/webpack.prod.js",
+    "dev-build": "webpack --config ./build/webpack.dev.js",
     "mybuild": "webpack --config webpack.myconfig.js",
     "buildwatch": "webpack --watch",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
@@ -28,7 +29,7 @@
     "expose-loader": "^0.7.5",
     "express": "^4.17.1",
     "file-loader": "^4.2.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.0.0-beta.11",
     "html-withimg-loader": "^0.1.16",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
