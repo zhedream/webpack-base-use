@@ -266,3 +266,15 @@ splitChunks.name: true , 拆分的文件名 默认 以chunks 名 + 连接符 命
 
 splitChunks.cacheGroups: {} , 缓存组, 按组打包 自定义规则如何拆分: 匹配 拆分 命名. 
 
+**noParse**
+
+在 module.noParse: /jquery|bootstrap/ , 不需要解析分析的模块,没有依赖的, 以提升打包速度
+注: bootstrap 这里有个坑, 如果只引入 bootstrap 的CSS 需要把 bootstrap 从 正则中去掉 , 肯能版本的原因
+
+webpack 中, 尽量少的使用loader, 会提升构建速度,比如说 css 通常, 选个 less 或 sass 就行了.
+
+babel-loader 配置
+exclude: /node_modules/, 排除 node_modules
+include: path.resolve(__dirname,'../src') // 只处理 src 下的, exclude 可以不用设置
+
+
