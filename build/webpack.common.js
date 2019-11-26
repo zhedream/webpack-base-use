@@ -48,11 +48,11 @@ module.exports = {
             template: 'public/index.html',
             // chunks: ['main']
         }),
-        new HtmlWebpackPlugin({
-            filename: 'other.html',
-            template: 'public/other.html',
-            // chunks: ['other']
-        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'other.html',
+        //     template: 'public/other.html',
+        //     // chunks: ['other']
+        // }),
         new MiniCssExtractPlugin({
             filename: '[name]-[hash:4].css'
         }),
@@ -63,6 +63,7 @@ module.exports = {
                 to: 'static' // output
             }
         ]),
+        new webpack.IgnorePlugin(/.local/,/moment/),
         // new webpack.ProvidePlugin({
         //     $: 'jquery',
         //     Jquery: 'jquery',

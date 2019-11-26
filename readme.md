@@ -277,4 +277,9 @@ babel-loader 配置
 exclude: /node_modules/, 排除 node_modules
 include: path.resolve(__dirname,'../src') // 只处理 src 下的, exclude 可以不用设置
 
+加入 noParse 时, 注意验证是否报错.
 
+**IgnorePlugin**
+
+用于忽略一些不需要, 或多余的. 如多国语言包, 或其他需要忽略的
+new webpack.IgnorePlugin(/.local/,/moment/),
