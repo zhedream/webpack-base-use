@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -29,17 +30,17 @@ module.exports = {
             automaticNameDelimiter: '~', // 默认的连接符
             name: true, // 拆分的chunk名,设为true表示根据模块名和CacheGroup的key来自动生成,使用上面连接符连接
             cacheGroups: { // 缓存组配置,上面配置读取完成后进行拆分,如果需要把多个模块拆分到一个文件,就需要缓存,所以命名为缓存组
-              vendors: { // 自定义缓存组名
-                test: /[\\/]node_modules[\\/]/, // 检查node_modules目录,只要模块在该目录下就使用上面配置拆分到这个组
-                priority: -10 // 权重-10,决定了哪个组优先匹配,例如node_modules下有个模块要拆分,同时满足vendors和default组,此时就会分到vendors组,因为-10 > -20
-              },
-              default: { // 默认缓存组名
-                minChunks: 2, // 最少引用两次才会被拆分
-                priority: -20, // 权重-20
-                reuseExistingChunk: true // 如果主入口中引入了两个模块,其中一个正好也引用了后一个,就会直接复用,无需引用两次
-              }
+                vendors: { // 自定义缓存组名
+                    test: /[\\/]node_modules[\\/]/, // 检查node_modules目录,只要模块在该目录下就使用上面配置拆分到这个组
+                    priority: -10 // 权重-10,决定了哪个组优先匹配,例如node_modules下有个模块要拆分,同时满足vendors和default组,此时就会分到vendors组,因为-10 > -20
+                },
+                default: { // 默认缓存组名
+                    minChunks: 2, // 最少引用两次才会被拆分
+                    priority: -20, // 权重-20
+                    reuseExistingChunk: true // 如果主入口中引入了两个模块,其中一个正好也引用了后一个,就会直接复用,无需引用两次
+                }
             }
-          }
+        }
     },
     plugins: [
         new webpack.BannerPlugin('这里添加版权信息啦'),
@@ -47,6 +48,9 @@ module.exports = {
             filename: 'index.html',
             template: 'public/index.html',
             // chunks: ['main']
+        }),
+        new AddAssetHtmlWebpackPlugin({
+            filepath: path.resolve(__dirname, '../dist/vue_dll.js')
         }),
         // new HtmlWebpackPlugin({
         //     filename: 'other.html',
@@ -56,14 +60,17 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name]-[hash:4].css'
         }),
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
+        new webpack.DllReferencePlugin({
+            manifest: path.resolve(__dirname, '../dist/manifest.json') // 使用提前打包好的
+        }),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, '..', './public/static'),
                 to: 'static' // output
             }
         ]),
-        new webpack.IgnorePlugin(/.local/,/moment/),
+        new webpack.IgnorePlugin(/.local/, /moment/),
         // new webpack.ProvidePlugin({
         //     $: 'jquery',
         //     Jquery: 'jquery',
@@ -107,7 +114,7 @@ module.exports = {
                     // }
                 },
                 exclude: /node_modules/,
-                include: path.resolve(__dirname,'../src')
+                include: path.resolve(__dirname, '../src')
             },
             {
                 test: /\.(htm|html)$/i,

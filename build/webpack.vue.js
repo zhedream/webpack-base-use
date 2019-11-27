@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
-    mode:'development',
+    mode:'production',
     entry: {
         vue:[
             'vue/dist/vue.js',
@@ -12,12 +12,12 @@ module.exports = {
     output:{
         filename:'[name]_dll.js',
         path:path.resolve(__dirname,'../dist'),
-        library:'[name]_dll'
+        library:'[name]_dll' // 对外暴露 一个全局变量
     },
     plugins:[
         new webpack.DllPlugin({
             name:'[name]_dll',
-            path:path.resolve(__dirname,'../dist/manifest.json')
+            path:path.resolve(__dirname,'../dist/manifest.json') // 一个清单
         })
     ]
 }

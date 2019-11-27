@@ -288,4 +288,21 @@ new webpack.IgnorePlugin(/.local/,/moment/),
 
 把不会变的包, 提前打包好. 就可以不用每次都打包.
 1. 打包导出 dll ,生成动态链接库
+单独 用一个webpack 配置 打包 vue 相关的
+  npm run build:vue
+  我们输出包到 dist 目录, 所以 把 new CleanWebpackPlugin() 不要它自动清理.
 
+2. 引用
+在 webpack.common.js 中 , 使用 DllReferencePlugin 插件
+
+npm i add-asset-html-webpack-plugin -D  自动引入资源到 html
+再 到 index.html 引入
+```js
+new webpack.DllReferencePlugin({
+  manifest:path.resolve(__dirname,'../dist/manifest.json') // 引用提前打包好的 vue_dll
+}),
+// 需要在 HtmlWebpackPlugin 之后
+new AddAssetHtmlWebpackPlugin({
+  filepath: path.resolve(__dirname, '../dist/vue_dll.js') // 自动将 vue_dll 引入 html
+  }),
+```
