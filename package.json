@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./build/webpack.prod.js",
+    "build:vue": "webpack --config ./build/webpack.vue.js",
     "dev-build": "webpack --config ./build/webpack.dev.js",
     "mybuild": "webpack --config webpack.myconfig.js",
     "buildwatch": "webpack --watch",
@@ -54,6 +55,8 @@
     "@babel/runtime": "^7.7.2",
     "bootstrap": "^3.4.1",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3"
   }
 }

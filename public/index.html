@@ -15,15 +15,18 @@
 </head>
 
 <body>
-
-    <h1 id="webpack">Hello Webpack 
+    修改index.html 不会自动刷新
+    <div id="webpack">Hello Webpack 
         <span class="hello">
-            less
+            {{msg}}
         </span>
         <span class="scss">
                 scss
         </span>
-    </h1>
+        <router-link to="/home">home</router-link>
+        <router-link to="/index">index</router-link>
+        <router-view></router-view>
+    </div>
 
     <div class="img"></div>
 

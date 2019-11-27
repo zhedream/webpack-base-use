@@ -283,3 +283,9 @@ include: path.resolve(__dirname,'../src') // 只处理 src 下的, exclude 可�
 
 用于忽略一些不需要, 或多余的. 如多国语言包, 或其他需要忽略的
 new webpack.IgnorePlugin(/.local/,/moment/),
+
+**Dllplugin**
+
+把不会变的包, 提前打包好. 就可以不用每次都打包.
+1. 打包导出 dll ,生成动态链接库
+
