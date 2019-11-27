@@ -306,3 +306,26 @@ new AddAssetHtmlWebpackPlugin({
   filepath: path.resolve(__dirname, '../dist/vue_dll.js') // 自动将 vue_dll 引入 html
   }),
 ```
+
+**happypack**
+
+早期 webpack 多进程打包的一个插件 , 现在不需要了, 在 webpack 1 ,2 常用, 
+如果要时用的发, 或者可以看看 thread-loader , 也是 开启进程  
+```js
+
+const HappyPack = require('happypack')
+// 配置loader
+{
+  test: /.js$/,
+  use: {
+      loader: 'happypack/loader'
+    },
+  include: path.resolve(__dirname, '../src'),
+  exclude: /node_modules/
+}
+// 配置插件
+new HappyPack({
+    loaders: [ 'babel-loader' ]
+})
+
+```
