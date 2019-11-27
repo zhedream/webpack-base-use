@@ -329,3 +329,8 @@ new HappyPack({
 })
 
 ```
+
+**hash与缓存**
+hash | contenthash | chunkhash
+输出的文件, 加 hash [name]-[hash:4].js  |  [name]-[contenthash:4].js
+
