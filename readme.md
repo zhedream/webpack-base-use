@@ -357,4 +357,27 @@ https://webpack.docschina.org/guides/code-splitting/#bundle-分析-bundle-analys
 
    其中webpack-bundle-analyzer是一个插件，可以以插件的方式安装到项目中
 
+## 覆盖率
+
+性能指标之一 , 代码使用情况.
+
+可以在Chrome浏览器的控制台中按：ctrl + shift + p，查找coverage，打开覆盖率面板, 可以查看覆盖率
+
+多是用懒加载, 可以提升覆盖率. 对应的也有预加载的技术
+
+
+**优化懒加载 Prefetching 和 Preloading**
+
+preload chunk 会在父 chunk 加载时，以并行方式开始加载. prefetch chunk 会在父 chunk 加载结束后开始加载。
+Prefetching 会比较多用
+有的一部加载的模块可能大较大, 或容易使用到, 如登录. 
+则可以使用 webpackPrefetch 空闲加载, 在首屏加载完毕后, 紧接着在进行加载其他模块
+
+```js
+// webpackPreload: true
+return import(/* webpackPrefetch: true */ 'jquery').then(({ default: $ }) => {
+    return $('<div></div>').html('我是main')
+  })
+```
+
 
