@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./build/webpack.prod.js",
+    "build:analyse": "webpack --profile --json > stats.json --config ./build/webpack.prod.js",
     "build:vue": "webpack --config ./build/webpack.vue.js",
     "dev-build": "webpack --config ./build/webpack.dev.js",
     "mybuild": "webpack --config webpack.myconfig.js",

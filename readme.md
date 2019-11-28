@@ -1,4 +1,4 @@
-# Webpacb
+# Webpack
 
 webpack 的学习
 
@@ -333,4 +333,28 @@ new HappyPack({
 **hash与缓存**
 hash | contenthash | chunkhash
 输出的文件, 加 hash [name]-[hash:4].js  |  [name]-[contenthash:4].js
+
+**打包分析**
+
+https://webpack.docschina.org/guides/code-splitting/#bundle-分析-bundle-analysis-
+
+项目构建完成后，需要通过一些工具对打包后的bundle进行分析，通过分析才能总结出一些经验，官方推荐的分析方法有两步完成：
+
+1. 使用`--profile --json`参数，以json格式来输出打包后的结果到某个指定文件中
+
+   `webpack --profile --json > stats.json`
+
+2. 将stats.json文件放入工具中进行分析
+
+   官方工具：[official analyze tool](https://github.com/webpack/analyse)
+
+   官方推荐的其他四个工具：
+
+   - [webpack-chart](https://alexkuz.github.io/webpack-chart/)
+   - [webpack-visualizer](https://chrisbateman.github.io/webpack-visualizer/)
+   - [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+   - [webpack bundle optimize helper](https://webpack.jakoblind.no/optimize)
+
+   其中webpack-bundle-analyzer是一个插件，可以以插件的方式安装到项目中
+
 
